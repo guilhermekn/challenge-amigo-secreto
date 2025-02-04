@@ -33,7 +33,7 @@ function sortearAmigo() {
 
     // Embaralha o array de amigos
     let amigosSorteados = [...amigos];
-    amigosSorteados = amigosSorteados.short(() => Math.random() - 0.5);
+    amigosSorteados = amigosSorteados.sort(() => Math.random() - 0.5);
 
     // Exibe o resultado do sorteio
     let resultado = document.querySelector('#resultado');
@@ -61,10 +61,10 @@ function adicionarAmigo() {
     } else {
         amigos.push(nome); // Adiciona o nome à lista de amigos
         console.log(amigos); // Mostra o array no console de depuração
-        exibirAmigo();
+        exibirAmigos();
 
         // Limpa o campo de entrada, definindo o valor como string vazia
-        document.querySelector('.input-name').value = ""; // Redefine o campo de entrada para vazio
+        document.querySelector('#amigo').value = ""; // Redefine o campo de entrada para vazio pelo id
     }
 }
 
