@@ -24,6 +24,32 @@ function exibirAmigos() {
     });
 }
 
+// Função para sortear os amigos
+function sortearAmigo() {
+    if (amigos.length < 2) {
+        exibirTextoNaTela('h2', 'Precisa de pelo menos 2 amigos para o sorteio.');
+        return;
+    }
+
+    // Embaralha o array de amigos
+    let amigosSorteados = [...amigos];
+    amigosSorteados = amigosSorteados.short(() => Math.random() - 0.5);
+
+    // Exibe o resultado do sorteio
+    let resultado = document.querySelector('#resultado');
+    resultado.innerHTML = ""; // Limpa os resultados anteriores
+
+    // Atribui um amigo secreto a cada um
+    amigos.forEach((amigo, index) => {
+        let amigoSorteado = amigosSorteados[index === amigos.length - 1 ? 0 : index + 1]; // Garante que ninguém seja seu próprio amigo secreto
+        let itemResultado = document.createElement('li');
+        itemResultado.textContent = `${amigo} tirou ${amigoSorteado}`;
+        resultado.appendChild(itemResultado);
+    });
+
+    exibirTextoNaTela('h2', 'Sorteio realizado com sucesso!');
+}
+
 
 // Função chamada quando o botão de adicionar amigo é clicado
 function adicionarAmigo() {
